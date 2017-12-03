@@ -25,6 +25,11 @@
       <version>0.14</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>fm.void.jetm</groupId>
+      <artifactId>jetm</artifactId>
+      <version>1.2.3</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
