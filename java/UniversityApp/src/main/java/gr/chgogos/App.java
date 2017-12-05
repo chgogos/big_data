@@ -10,7 +10,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class App {
-  static int N = 10000; 
+  static int N = 100; 
   static int YEAR = 2017;
   public static void main(String[] args) {
     System.out.printf("Generating %d students:\n", N);
@@ -21,18 +21,16 @@ public class App {
                                faker.number().randomDouble(2, 5, 10),
                                faker.number().numberBetween(2015, 2018)));
 
+    System.out.println("Show 5 students:");                           
     for(int i=0;i<5;i++)
         System.out.println(students.get(i));
 
-    // for(Student st: students)
-    //     System.out.println(st);
-
     System.out.printf("Searching for best grade for year %d\n", YEAR);
     scenario1(students, YEAR);
-    scenario2(students, YEAR);
-    scenario3(students, YEAR);
-    scenario4(students, YEAR);
-    scenario5(students, YEAR);
+    // scenario2(students, YEAR);
+    // scenario3(students, YEAR);
+    // scenario4(students, YEAR);
+    // scenario5(students, YEAR);
   }
 
   static void scenario1(List<Student> students, int year) {

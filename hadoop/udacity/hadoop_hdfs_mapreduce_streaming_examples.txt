@@ -1,0 +1,37 @@
+HADOOP
+
+// μεταφορά δεδομένων στο HDFS
+pwd
+ls
+cd data
+head purchases.txt
+ls -lh
+ls -l --block-size=M
+hadoop fs -ls
+hadoop fs -ls -h
+hadoop fs -put purchases.txt 
+hadoop fs -tail purchases.txt
+
+// επισκόπηση κώδικα
+cd ../code
+gedit mapper.py &
+gedit reducer.py &
+
+// δοκιμή κώδικα τοπικά με υποσύνολο των δεδομένων
+head -50 ../data/purchases.txt > testfile
+cat testfile | ./mapper.py
+cat testfile | ./mapper.py | sort | ./reducer.py
+
+// εκτέλεση MapReduce job
+http://localhost:50030
+// hadoop -jar ...
+hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py -input myinput -output output1
+// alias hs για το hadoop -jar ...
+hs mapper.py reducer.py purchases.txt output1
+
+// μεταφορά από το HDFS στον τοπικό ΗΥ και εμφάνιση αποτελεσμάτων
+hadoop fs -ls
+hadoop fs -get output1/part-00000 results.txt
+cat results.txt
+
+

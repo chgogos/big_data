@@ -4,4 +4,24 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-mr_example.py	../python/mr_example.py	1;"	kind:file	line:1
+AREAS	../python/example1.py	/^AREAS = []$/;"	kind:variable	line:16
+RADIUSES	../python/example1.py	/^RADIUSES = [2, 5, 7.1, 0.3, 10]$/;"	kind:variable	line:13
+area	../python/example1.py	/^def area(radius):$/;"	kind:function	line:7
+avg	../python/example3.py	/^avg = statistics.mean(data)$/;"	kind:variable	line:9
+c_to_f	../python/example2.py	/^c_to_f = lambda city_temp: (city_temp[0], 9\/5*city_temp[1]+32)$/;"	kind:variable	line:8
+data	../python/example3.py	/^data = [1.3, 2.7, 3.4, 5.2, 3.2, 7.1]$/;"	kind:variable	line:6
+data	../python/example4.py	/^data = [4,2,6,5,2,8]$/;"	kind:variable	line:3
+example1.py	../python/example1.py	1;"	kind:file	line:1
+example2.py	../python/example2.py	1;"	kind:file	line:1
+example3.py	../python/example3.py	1;"	kind:file	line:1
+example4.py	../python/example4.py	1;"	kind:file	line:1
+example5.py	../python/example5.py	1;"	kind:file	line:1
+it	../python/example3.py	/^it = filter(lambda x: x>avg, data)$/;"	kind:variable	line:12
+math	../python/example1.py	/^import math$/;"	kind:namespace	line:5
+numbers	../python/example5.py	/^numbers = [1, 2, 3, 4, 5, 6]$/;"	kind:variable	line:7
+reduce	../python/example4.py	/^from functools import reduce$/;"	kind:namespace	line:1
+reduce	../python/example5.py	/^from functools import reduce$/;"	kind:namespace	line:5
+res1	../python/example4.py	/^res1=1$/;"	kind:variable	line:5
+res2	../python/example4.py	/^res2 = reduce(lambda x,y:x*y, data)$/;"	kind:variable	line:10
+statistics	../python/example3.py	/^import statistics$/;"	kind:namespace	line:4
+temps	../python/example2.py	/^temps =[("Athens",30),("Berlin",29),("Cairo", 36),("London",17)]$/;"	kind:variable	line:5
