@@ -25,6 +25,7 @@ hadoop fs -rm newname.txt
 hadoop fs -mkdir myinput
 hadoop fs -put purchases.txt myinput
 hadoop fs -ls myinput
+hadoop fs -rm -f -r myinput 
 // no navigation is possible in hdfs with cd, full paths are needed
 
 // udacity code
