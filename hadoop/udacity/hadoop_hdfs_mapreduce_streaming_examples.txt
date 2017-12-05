@@ -8,6 +8,8 @@ password: training
 // hdfs 
 pwd
 ls
+cd udacity_training
+tree
 cd data
 ls -lh
 ls -l --block-size=M
@@ -38,9 +40,12 @@ head -50 ../data/purchases.txt > testfile
 cat testfile | ./mapper.py
 cat testfile | ./mapper.py | sort | ./reducer.py
 
+// namenode 
+http://localhost:8020  // name node
+    Browse the filesystem > user > training
+
 // execute MapReduce job
 http://localhost:50030  // job tracker
-http://localhost:8020  // name node
 hadoop jar 
     /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar 
     -mapper mapper.py -reducer reducer.py 
@@ -48,7 +53,7 @@ hadoop jar
     -input myinput -output output1
 
 // alias hs for the previous command
-hs mapper.py reducer.py purchases.txt output1
+hs mapper.py reducer.py myinput output1
 
 // copy data from hdfs to VM local
 hadoop fs -ls
