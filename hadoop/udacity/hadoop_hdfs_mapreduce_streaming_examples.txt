@@ -1,37 +1,60 @@
-HADOOP
+HADOOP - MAPREDUCE - HADOOP streaming
+Udacity + cloudera MOOC
+https://www.udacity.com/course/intro-to-hadoop-and-mapreduce--ud617
+Udacity Hadoop VM
+user: training
+password: training
 
-// μεταφορά δεδομένων στο HDFS
+// hdfs 
 pwd
 ls
 cd data
-head purchases.txt
 ls -lh
 ls -l --block-size=M
+head purchases.txt
+more purchases.txt
+less purchases.txt
+wc -l purchases.txt
 hadoop fs -ls
 hadoop fs -ls -h
 hadoop fs -put purchases.txt 
 hadoop fs -tail purchases.txt
+hadoop fs -mv purchases.txt newname.txt
+hadoop fs -ls
+hadoop fs -rm newname.txt
+hadoop fs -mkdir myinput
+hadoop fs -put purchases.txt myinput
+hadoop fs -ls myinput
+// no navigation is possible in hdfs with cd, full paths are needed
 
-// επισκόπηση κώδικα
+// udacity code
 cd ../code
 gedit mapper.py &
 gedit reducer.py &
 
-// δοκιμή κώδικα τοπικά με υποσύνολο των δεδομένων
+// execute code locally
 head -50 ../data/purchases.txt > testfile
 cat testfile | ./mapper.py
 cat testfile | ./mapper.py | sort | ./reducer.py
 
-// εκτέλεση MapReduce job
-http://localhost:50030
-// hadoop -jar ...
-hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py -input myinput -output output1
-// alias hs για το hadoop -jar ...
+// execute MapReduce job
+http://localhost:50030  // job tracker
+http://localhost:8020  // name node
+hadoop jar 
+    /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar 
+    -mapper mapper.py -reducer reducer.py 
+    -file mapper.py -file reducer.py 
+    -input myinput -output output1
+
+// alias hs for the previous command
 hs mapper.py reducer.py purchases.txt output1
 
-// μεταφορά από το HDFS στον τοπικό ΗΥ και εμφάνιση αποτελεσμάτων
+// copy data from hdfs to VM local
 hadoop fs -ls
 hadoop fs -get output1/part-00000 results.txt
 cat results.txt
 
-
+// connect from the host (computer that hosts the VM) to the VM
+ssh training@XXX.XXX.XXX.XXX
+// copy data from the VM to the host
+scp training@XXX.XXX.XXX.XXX:/home/training/udacity_trainig/data/purchases.txt .
