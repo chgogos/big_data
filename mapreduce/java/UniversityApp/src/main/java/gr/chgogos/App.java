@@ -26,11 +26,11 @@ public class App {
         System.out.println(students.get(i));
 
     System.out.printf("Searching for best grade for year %d\n", YEAR);
-    scenario1(students, YEAR);
+    // scenario1(students, YEAR);
     // scenario2(students, YEAR);
     // scenario3(students, YEAR);
     // scenario4(students, YEAR);
-    // scenario5(students, YEAR);
+    scenario5(students, YEAR);
   }
 
   static void scenario1(List<Student> students, int year) {
