@@ -2,58 +2,56 @@
 
 Java Magazine May-June 2016 - Apache Spark 101
 
-Install apache spark locally
-
-Download weblogs from Java magazine download area: https://goo.gl/ruJ629
-unzip to ~
-
-## Example 0
-	
-	// open weblogs, see some data 
-
-	$ cd ~
-	$ cd weblogs
-	$ ls -lh 
-	$ ls | wc -l  // number of files (=108)
-	$ less 2013-09-15.log  // user is the 3rd item in each web log line
-	$ cd ~ 
-
-	$ spark-shell // start spark 
-	http://localhost:4040  // spark shell application UI
-
-	scala> sc.version 
-	scala> val weblogs = sc.textFile("weblogs/*")
-	scala> weblogs.count()   // action count
-	scala> weblogs.first()   // action first
-	scala> weblogs.take(2)   // action take
-	
-	// action takeSample, false=noreplacement (each row can be selected at most one time) 
-	scala> weblogs.takeSample(false,3)   
+Download weblogs from Java magazine download area: <https://goo.gl/ruJ629>
 
 ## Example 1
 
-	// Number of distinct users, user is the 3rd item in each web log line
-
-	// transformation map-> transformation distinct
-	scala> val userIds = weblogs.map(item => item.split(" ")(2)).distinct() 
-	scala> userIds.count() // action count
+    # open weblogs, see some data
+    $ cd weblogs
+    $ ls -lh
+    ...
+    $ ls | wc -l
+    108
+    # examination of data (user is the 3rd item in each web log line)
+    $ less 2013-09-15.log
+    ...
+    $ spark-shell
+    # spark shell application UI <http://localhost:4040>
+    scala> sc.version
+    ...
+    scala> val weblogs = sc.textFile("*")
+    scala> weblogs.count()
+    ...
+    scala> weblogs.first()
+    ...
+    scala> weblogs.take(2)
+    ...
+    # Action takeSample, false=noreplacement (each row can be selected at most one time) 
+    scala> weblogs.takeSample(false,3)
+    ...
 
 ## Example 2
 
-	// Group IPs that each user connected from
-
-	// 2 transformations map->map
-	scala> var userIPpairs = weblogs.map(item => item.split(" ")).map(s => (s(2),s(0))) 
-	scala> userIPpairs.first() // action first
-	scala> val userIPs = userIPpairs.groupByKey() // transformation groupByKey
-	scala> userIPs.first() // action first
-	scala> userIPs.takeSample(false,5) // action takeSample
+    # Number of distinct users, user is the 3rd item in each web log line (transformation map->transformation distinct)
+    scala> val userIds = weblogs.map(item => item.split(" ")(2)).distinct()
+    scala> userIds.count()
+    ...
 
 ## Example 3
 
-	// Top 50 users according to the number of IPs they connected from
-	
-	// 3 transformations map->sortByKey->map
-	scala> val top = userIPs.map(v=>(v._2.toSeq.length, v._1)).sortByKey(false).map(item=>item.swap)
-	scala> top.take(50) // action take
-	scala> :quit
+    # Group IPs that each user has been connected from (transformation map->transformation map)
+    scala> var userIPpairs = weblogs.map(item => item.split(" ")).map(s => (s(2),s(0)))
+    scala> userIPpairs.first()
+    ...
+    scala> val userIPs = userIPpairs.groupByKey()
+    scala> userIPs.first()
+    ...
+    scala> userIPs.takeSample(false,5)
+
+## Example 4
+
+    # Top 50 users according to the number of IPs they connected from (transformation map->transformation sortByKey->transformation map)
+    scala> val top = userIPs.map(v=>(v._2.toSeq.length, v._1)).sortByKey(false).map(item=>item.swap)
+    scala> top.take(50)
+    ...
+    scala> :quit

@@ -1,6 +1,6 @@
 # Big Data technologies
 
-## Big Data 
+## Big Data
 
 * [Big Data infographic](http://infographic.ly/big-data-the-hype-and-the-reality/)
 * [The 3Vs of Big Data](http://www.zdnet.com/article/volume-velocity-and-variety-understanding-the-three-vs-of-big-data/)
@@ -13,7 +13,7 @@
 ## Apache Hadoop - MapReduce
 
 * [Introduction to batch processing – MapReduce](https://datawhatnow.com/batch-processing-mapreduce/)
-* <https://hadoopproject.com/hadoop-projects/> 
+* <https://hadoopproject.com/hadoop-projects/>
 
 ## Apache Spark
 

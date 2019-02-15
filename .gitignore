@@ -1,0 +1,12 @@
+~*
+apache_spark/java_magazine_may_june_2016/weblogs
+apache_spark/mapr_getting-started/derby.log
+apache_spark/mapr_getting-started/metastore_db
+apache_spark/practical_apache_spark/metastore_db
+apache_spark/practical_apache_spark/movielens.parquet
+apache_spark/practical_apache_spark/derby.log
+apache_spark/practical_apache_spark/nice_movies
+hadoop/udacity_training/MR_example1/purchases.txt
+hadoop/udacity_training/MR_example2/access_log
+mapreduce/cpp/mr_example
+no_big_data/ChessData
