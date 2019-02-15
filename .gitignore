@@ -1,8 +1,8 @@
 ~*
 .DS_Store
 apache_spark/java_magazine_may_june_2016/weblogs
-apache_spark/mapr_getting-started/derby.log
-apache_spark/mapr_getting-started/metastore_db
+apache_spark/mapr_getting_started/derby.log
+apache_spark/mapr_getting_started/metastore_db
 apache_spark/practical_apache_spark/metastore_db
 apache_spark/practical_apache_spark/movielens.parquet
 apache_spark/practical_apache_spark/derby.log
