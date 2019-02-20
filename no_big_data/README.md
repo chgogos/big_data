@@ -22,7 +22,8 @@ Download chess game data (pgn files) from <https://github.com/rozim/ChessData>
     [Black "Maksimenko, Andrei"]
     [Result "1-0"]
     [WhiteElo "2735"]
-    [BlackElo "2
+    [BlackElo "2505"]
+    [ECO "C63"]
 
     $ du -h
     1.4G  .
