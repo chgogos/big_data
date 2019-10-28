@@ -14,12 +14,11 @@ L=M=N=5
 # N = 5
 
 # matrix1.json (A=2x3, B=3x2)
-# L = 2
-# M = 3
-# N = 2
+L = 2
+M = 3
+N = 2
 
 mr = MapReduce.MapReduce()
-
 
 def mapper(record):
     key = record[0]

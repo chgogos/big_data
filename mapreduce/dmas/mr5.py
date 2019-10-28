@@ -11,7 +11,7 @@ def mapper(record):
   sequence = record[1][:-10]
   mr.emit_intermediate(sequence, 1)
 
-def reducer(key, list_of_values):
+def reducer(key, _):
   mr.emit(key)
 
 if __name__ == '__main__':
