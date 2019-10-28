@@ -2,5 +2,7 @@
     "java.configuration.updateBuildConfiguration": "interactive",
     "files.associations": {
         "numeric": "cpp"
-    }
+    },
+    "python.formatting.provider": "autopep8",
+    "python.pythonPath": "/usr/local/bin/python"
 }
