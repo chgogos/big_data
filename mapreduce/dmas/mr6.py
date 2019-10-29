@@ -35,6 +35,7 @@ def mapper(record):
 
 
 def reducer(key, list_of_values):
+    # mr.emit((key, list_of_values))
     sum = 0
     for v1 in list_of_values:
         if v1[0] == "a":

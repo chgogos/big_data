@@ -16,10 +16,7 @@ def mapper(record):
       mr.emit_intermediate(w, key)
 
 def reducer(key, list_of_values):
-    list = []
-    for v in list_of_values:
-      list.append(v)
-    mr.emit((key, list))
+    mr.emit((key, list_of_values))
 
 if __name__ == '__main__':
   inputdata = open(sys.argv[1])
