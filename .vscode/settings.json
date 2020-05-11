@@ -4,5 +4,5 @@
         "numeric": "cpp"
     },
     "python.formatting.provider": "autopep8",
-    "python.pythonPath": "/usr/local/bin/python"
+    "python.pythonPath": "C:\\Users\\chgogos\\.pyenv\\pyenv-win\\versions\\3.8.0-amd64\\python.exe"
 }

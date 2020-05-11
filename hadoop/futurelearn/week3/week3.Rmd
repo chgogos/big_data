@@ -1,0 +1,80 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## 3.2 Create and store data
+
+```{r}
+X1 <- matrix(rnorm(150,0,1), ncol=3)              # RANDOM 50x3 MATRIX X
+X2 <- matrix(round(runif(50,1,5),0),ncol=1)       # RANDOM 50x1 MATRIX (COLUMN)
+X<-cbind(X1,X2)                                   # MERGING X1 AND X2 INTO MATRIX X
+colnames(X)<-c("X1","X2","X3","GROUP")            # SETTING THE COLUMN LABELS
+```
+
+```{r}
+write.table(X, file="mymatrix.txt", row.names=FALSE, col.names=TRUE)
+```
+
+```{r}
+Xd = as.data.frame(X)
+save(Xd, file = "mymatrixDF.RData")
+```
+
+```{r}
+library(MASS)
+write.matrix(format(X, scientific=FALSE), file = "mymatrix.csv", sep=",")
+```
+
+
+### Read txt file
+
+```{r}
+XX=read.table(file="mymatrix.txt", header = TRUE)
+```
+
+### Read Rdata file
+
+```{r}
+XX=read.table(file="mymatrix.txt", header = TRUE)
+```
+
+### Read the CSV file
+
+```{r}
+read.csv(file = "mymatrix.csv")
+```
+
+## 3.3 Basic data operations in R
+
+```{r}
+library(plyr) 
+set.seed(1000)
+
+M1 <- matrix(rnorm(150,0,1), ncol=3)              
+colnames(M1)<-c("X1","X2","X3")
+
+M2 <- matrix(round(runif(50,1,4),0),ncol=1)       
+group=c('Group_A','Group_B','Group_D','Group_E')
+M3 <- mapvalues(M2, from = 1:4, to = group)
+colnames(M3)<-c("group")
+
+M<-data.frame(M1,M3)     
+
+table(M$group)
+summary(M$group)
+
+centr=colMeans(M[,1:3])          # CENTROID
+centr
+
+```
+
+### 3.4 Basic matrix operations in R
+
+```{r}
+library(plyr) 
+set.seed(1000)
+M1 <- matrix(rnorm(150,0,1), ncol=3)              
+colnames(M1)<-c("X1","X2","X3")
+```
+
