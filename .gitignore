@@ -12,3 +12,4 @@ hadoop/udacity_training/MR_example2/access_log
 mapreduce/cpp/mr_example
 no_big_data/ChessData
 mapreduce/dmas/MapReduce.pyc
+*.pyc
