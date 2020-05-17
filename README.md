@@ -43,3 +43,9 @@
 * Apache Spark
   * <http://go.databricks.com/7-steps-for-a-developer-to-learn-apache-spark>
   * <http://go.databricks.com/gentle-intro-spark>
+  * Python
+    * <https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes>
+    * <https://github.com/jadianes/spark-py-notebooks>
+  * R
+    * [Mastering Spark with R](https://therinspark.com/)
+    * <https://github.com/jadianes/spark-r-notebooks>
