@@ -14,8 +14,10 @@ def mapper(record):
     words = list(set(words))
     for w in words:
       mr.emit_intermediate(w, key)
+      # print "key=%s value=%s" % (w,key)
 
 def reducer(key, list_of_values):
+    # print "key=%s value=%s" % (key,list_of_values)
     mr.emit((key, list_of_values))
 
 if __name__ == '__main__':

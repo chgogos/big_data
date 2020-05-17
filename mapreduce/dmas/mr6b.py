@@ -34,13 +34,14 @@ def mapper(record):
 
 
 def reducer(key, list_of_values):
-    # mr.emit((key, list_of_values))
     sum = 0
-    for v1 in list_of_values:
-        if v1[0] == "a":
-            for v2 in list_of_values:
-                if v2[0] == "b" and v1[2] == v2[1]:
-                    sum += v1[3]*v2[3]
+    dict_a = {}
+    for v in list_of_values:
+        if v[0] == "a":
+            dict_a[v[2]] = v[3]; 
+        elif v[0]=="b":
+            if v[1] in dict_a:
+                sum += dict_a[v[1]] * v[3]
     mr.emit((key, sum))
 
 if __name__ == '__main__':

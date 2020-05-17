@@ -2,7 +2,7 @@ import MapReduce
 import sys
 
 """
-reveal assymetric friendship relationships
+reveal asymmetric friendship relationships
 """
 
 mr = MapReduce.MapReduce()
@@ -14,6 +14,7 @@ def mapper(record):
     mr.emit_intermediate(friend, record)
 
 def reducer(key, list_of_values):
+    # print "key=%s value=%s" % (key, list_of_values)
     for v in list_of_values:
         if [v[1],v[0]] not in list_of_values:
           if (v[0] == key):
