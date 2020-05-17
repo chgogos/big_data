@@ -17,6 +17,8 @@ Purchase data beginning at 1/1/2012 and ending at 31/12/2012  (4138476 lines)
 Data (purchases.txt) can be downloaded from <http://content.udacity-data.com/courses/ud617/purchases.txt.gz>
 
 
+### Tests locally
+
 ```{sh}
 $ curl http://content.udacity-data.com/courses/ud617/purchases.txt.gz --output purchaces.txt.gz
 $ gzip -d purchaces.txt.gz
@@ -42,8 +44,9 @@ user 0m29.226s
 sys 0m1.113s
 ```
 
+### Test on Hadoop (virtual) cluster
+
 ```{sh}
-# Test on Hadoop (virtual) cluster
 # localhost:50070  --> name node
 # localhost:50030  --> job tracker
 VM$ cd udacity_training

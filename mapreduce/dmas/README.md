@@ -200,12 +200,14 @@ $ python mr5.py dna.json
 * [matrix.json](./matrix.json)
 
 ```{sh}
-$ python mr6.py matrix1.json 2 3 2   # (A=2x3, B=3x2)
+# (A=2x3, B=3x2)
+$ python mr6.py matrix1.json 2 3 2   
 [[0, 1], 14]
 [[1, 0], 19]
 [[0, 0], 5]
 [[1, 1], 28]
-$ python mr6.py matrix.json 5 5 5    # (A=5x5, B=5x5)
+# (A=5x5, B=5x5)
+$ python mr6.py matrix.json 5 5 5    
 [[1, 3], 7479]
 [[3, 0], 10512]
 [[2, 1], 9880]
@@ -240,12 +242,15 @@ $ python mr6.py matrix.json 5 5 5    # (A=5x5, B=5x5)
 * [matrix.json](./matrix.json)
 
 ```{sh}
-$ python mr6b.py matrix1.json 2 3 2   # (A=2x3, B=3x2)
+# (A=2x3, B=3x2)
+$ python mr6b.py matrix1.json 2 3 2   
 [[0, 1], 14]
 [[1, 0], 19]
 [[0, 0], 5]
 [[1, 1], 28]
-$ python mr6b.py matrix.json 5 5 5    # (A=5x5, B=5x5)
+
+# (A=5x5, B=5x5)
+$ python mr6b.py matrix.json 5 5 5    
 [[1, 3], 7479]
 [[3, 0], 10512]
 [[2, 1], 9880]
