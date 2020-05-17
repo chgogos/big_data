@@ -2,13 +2,25 @@
 
 ## Problem 0 (word count problem using data in a json file)
 
+* [mr0.py](./mr0.py)
+* [text1.json](./text1.json)
+* [text2.json](./text2.json)
+
+    ```{sh}
     python2 mr0.py text1.json
     python2 mr0.py text2.json 
+    ```
 
 ## Problem 1 (inverted index for books)
 
+* [mr1.py](./mr1.py)
+* [text1.json](./text1.json)
+* [books.json](./books.json)
+
+    ```{sh}
     python2 mr1.py text1.json 
     python2 mr1.py books.json 
+    ```
 
 ## Problem 2 (join Orders with LineItems)
 
