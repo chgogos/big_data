@@ -1,6 +1,6 @@
 # Apache Spark example using spark-shell and processing weblogs
 
-Java Magazine May-June 2016 - Apache Spark 101
+[Java Magazine May-June 2016 - Apache Spark 101](http://www.javamagazine.mozaicreader.com/MayJune2016/LinkedIn/29/0#&pageSet=14&page=0)
 
 Download weblogs from Java magazine download area: <https://goo.gl/ruJ629>
 
