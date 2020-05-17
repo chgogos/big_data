@@ -45,4 +45,7 @@ def reducer(key, list_of_values):
 
 if __name__ == '__main__':
     inputdata = open(sys.argv[1])
+    L = int(sys.argv[2])
+    M = int(sys.argv[3])
+    N = int(sys.argv[4])
     mr.execute(inputdata, mapper, reducer)
