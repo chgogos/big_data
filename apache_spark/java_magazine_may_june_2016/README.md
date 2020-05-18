@@ -6,8 +6,9 @@ Download weblogs from Java magazine download area: <https://goo.gl/ruJ629>
 
 ## Example 1
 
+Open weblogs folder, see some data from the command line.
+
 ```{sh}
-# open weblogs, see some data
 $ cd weblogs
 $ ls -lh
 total 170200
@@ -19,6 +20,11 @@ $ ls | wc -l
 # examination of data (user is the 3rd item in each web log line)
 $ less 2013-09-15.log
 ...
+```
+
+Data exploration with spark-shell.
+
+```{sh}
 $ spark-shell
 # spark shell application UI <http://localhost:4040>
 scala> sc.version
@@ -37,8 +43,9 @@ res: Array[String] = Array(1.226.231.214 - 45650 [22/Nov/2013:13:55:58 +0100] "G
 
 ## Example 2
 
+Get number of distinct users, user is the 3rd item in each web log line (transformation map->transformation distinct).
+
 ```{sh}
-# Number of distinct users, user is the 3rd item in each web log line (transformation map->transformation distinct)
 scala> val userIds = weblogs.map(item => item.split(" ")(2)).distinct()
 scala> userIds.count()
 res: Long = 12582
@@ -46,8 +53,9 @@ res: Long = 12582
 
 ## Example 3
 
+Group IPs that each user has been connected from (transformation map->transformation map)
+
 ```{sh}
-# Group IPs that each user has been connected from (transformation map->transformation map)
 scala> var userIPpairs = weblogs.map(item => item.split(" ")).map(s => (s(2),s(0)))
 scala> userIPpairs.first()
 res: (String, String) = (40486,146.11.102.141)
@@ -60,8 +68,9 @@ res: Array[(String, Iterable[String])] = Array((24592,CompactBuffer(173.219.197.
 
 ## Example 4
 
+Top 50 users according to the number of IPs they connected from (transformation map->transformation sortByKey->transformation map)
+
 ```{sh}
-# Top 50 users according to the number of IPs they connected from (transformation map->transformation sortByKey->transformation map)
 scala> val top = userIPs.map(v=>(v._2.toSeq.length, v._1)).sortByKey(false).map(item=>item.swap)
 scala> top.take(50)
 res: Array[(String, Int)] = Array((152,856), (96,850), (46,846), (40,842), (203,836), (192,832), (160,830), (126,818), (189,814), (130,812), (85,812), (198,812), (62,811), (145,808), (197,808), (67,804), (148,804), (9,804), (119,804), (5,802), (208,794), (15,792), (109,790), (151,790), (76,788), (90,786), (122,786), (146,784), (207,782), (100,782), (14,782), (194,782), (32,780), (142,780), (94,780), (30,778), (56,778), (138,776), (187,774), (73,772), (7,772), (190,772), (196,772), (69,770), (205,770), (164,770), (36,768), (140,768), (75,766), (87,766))

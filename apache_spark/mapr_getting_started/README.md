@@ -2,78 +2,123 @@
 	From inception to production
 	by James A. Scott
 
-<https://mapr.com/ebooks/spark/05-processing-tabular-data-with-spark-sql.html>
+* [Getting Started with Apache Spark from Inception to Production](https://mapr.com/ebook/getting-started-with-apache-spark-v2/)
+* [MapR ebooks](https://mapr.com/ebooks/)
 
 ## Example 1
-	// open interactive shell using scala
-	$ spark-shell
 
-	// create sequence of data 
-	scala> val data = 1 to 50000
-	// put data into a RDD
-	scala> val sparkSample = sc.paralellize(data)
-	// filter data 
-	scala> sparkSample.filter(_ < 10).collect()
+Load data in spark,
 
+```{sh}
+// open interactive shell using scala
+$ spark-shell
 
-## Example 2 (processing tabular data with Spark SQL - scala interacive shell)
-	
-	// open interactive shell using scala
-	$ spark-shell
+// create sequence of data 
+scala> val data = 1 to 50000
+// put data into a RDD
+scala> val sparkSample = sc.parallelize(data)
+// filter data 
+scala> sparkSample.filter(x => x < 10).collect()
+// or equivalently using anonymous variable _
+scala> sparkSample.filter(_ < 10).collect()
+```
 
-	//  SQLContext entry point for working with structured data
-	scala> val sqlContext = new org.apache.spark.sql.SQLContext(sc)
-	// this is used to implicitly convert an RDD to a DataFrame.
-	scala> import sqlContext.implicits._
-	// Import Spark SQL data types and Row.
-	scala> import org.apache.spark.sql._
+## Example 2 (processing tabular data with Spark SQL - scala interactive shell)
 
-	// load the data into a new RDD	
-	scala> val ebayText = sc.textFile("ebay.csv")
-	scala> ebayText.first()
+* [ebay.csv](./ebay.csv)
 
-	// define the schema using a case class
-	scala> case class Auction(auctionid: String, bid: Float, bidtime: Float,bidder: String, bidderrate: Integer, openbid: Float, price: Float,item: String, daystolive: Integer)
+```{sh}	
+// open interactive shell using scala
+$ spark-shell
 
-	// create an RDD of Auction objects
-	scala> val ebay = ebayText.map(_.split(",")).map(p => Auction(p(0), p(1).toFloat,p(2).toFloat,p(3),p(4).toInt,p(5).toFloat,
-    p(6).toFloat,p(7),p(8).toInt))
+//  SQLContext entry point for working with structured data
+scala> val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+// this is used to implicitly convert an RDD to a DataFrame.
+scala> import sqlContext.implicits._
+// Import Spark SQL data types and Row.
+scala> import org.apache.spark.sql._
 
-	scala> ebay.first()
+// load the data into a new RDD	
+scala> val ebayText = sc.textFile("ebay.csv")
+scala> ebayText.first()
 
-	scala> ebay.count()
+// define the schema using a case class
+scala> case class Auction(auctionid: String, bid: Float, bidtime: Float,bidder: String, bidderrate: Integer, openbid: Float, price: Float,item: String, daystolive: Integer)
 
-	// change ebay RDD of Auction objects to a DataFrame
-	scala> val auction = ebay.toDF()
+// create an RDD of Auction objects
+scala> val ebay = ebayText.map(_.split(",")).map(p => Auction(p(0), p(1).toFloat,p(2).toFloat,p(3),p(4).toInt, p(5).toFloat, p(6).toFloat,p(7),p(8).toInt))
 
-	// Display the top 20 rows of DataFrame
-	scala> auction.show()
+scala> ebay.first()
 
-	// How many auctions were held?
-	scala> auction.select("auctionid").distinct.count
+scala> ebay.count()
 
-	// How many bids per item?
-	scala> auction.groupBy("auctionid", "item").count.show
+// change ebay RDD of Auction objects to a DataFrame
+scala> val auction = ebay.toDF()
 
-	// Get the auctions with closing price > 100
-	scala> val highprice = auction.filter("price > 100")
+// Display the top 20 rows of DataFrame
+scala> auction.show()
+// or equivalently without parentheses
+scala> auction.show
 
-	// display dataframe in a tabular format
-	scala> highprice.show()
+// How many auctions were held?
+scala> auction.select("auctionid").distinct.count
 
-	// register the DataFrame as a temp table
-	scala> auction.registerTempTable("auction")
+// How many bids per item?
+scala> auction.groupBy("auctionid", "item").count.show
 
-	// How many bids per auction?
-	scala> val results = sqlContext.sql("""SELECT auctionid, item,  count(bid) FROM auction
-    GROUP BY auctionid, item""")
+// Get the auctions with closing price > 100
+scala> val highprice = auction.filter("price > 100")
 
-	// display dataframe in a tabular format
-	scala> results.show()
+// display dataframe in a tabular format
+scala> highprice.show()
 
-	scala> val results = sqlContext.sql("""SELECT auctionid, MAX(price) FROM auction
-    GROUP BY item,auctionid""")
-	scala> results.show()
+// register the DataFrame as a temp table
+// In Windows issue the command:
+// c:\winutils\bin\winutils.exe chmod 777 c:\tmp\hive
+// then check:
+// c:\winutils\bin\winutils.exe ls c:\tmp\hive
+// result should be like:
+// drwxrwxrwx 1 DESKTOP-66P02VI\chgogos DESKTOP-66P02VI\None 0 May 18 2020 c:\tmp\hive
+scala> auction.registerTempTable("auction")
+
+// How many bids per auction?
+scala> val results = sqlContext.sql("""SELECT auctionid, item,  count(bid) FROM auction GROUP BY auctionid, item""")
+
+// display dataframe in a tabular format
+scala> results.show()
+
+// What is the maximum price per auctionid?
+scala> val results = sqlContext.sql("""SELECT auctionid, MAX(price) FROM auction
+GROUP BY item,auctionid""")
+scala> results.show()
+```
+
+Previous code without comments.
+
+```{sh}
+import sqlContext.implicits._
+import org.apache.spark.sql._
+val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+val ebayText = sc.textFile("ebay.csv")
+ebayText.first()
+case class Auction(auctionid: String, bid: Float, bidtime: Float,bidder: String, bidderrate: Integer, openbid: Float, price: Float,item: String, daystolive: Integer)
+val ebay = ebayText.map(_.split(",")).map(p => Auction(p(0), p(1).toFloat,p(2).toFloat,p(3),p(4).toInt, p(5).toFloat, p(6).toFloat,p(7),p(8).toInt))
+ebay.first()
+ebay.count()
+val auction = ebay.toDF()
+auction.show()
+auction.select("auctionid").distinct.count
+auction.groupBy("auctionid", "item").count.show
+auction.groupBy("auctionid", "item").count.show
+val highprice = auction.filter("price > 100")
+highprice.show()
+auction.registerTempTable("auction")
+val results = sqlContext.sql("""SELECT auctionid, item,  count(bid) FROM auction GROUP BY auctionid, item""")
+results.show()
+val results = sqlContext.sql("""SELECT auctionid, MAX(price) FROM auction
+GROUP BY item,auctionid""")
+results.show()
+```
 
 ## Example 3 (Computing user profiles with Spark - python interactive shell)
 
