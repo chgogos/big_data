@@ -6,9 +6,7 @@
 * [Getting Started with Apache Spark from Inception to Production - Version 2](https://mapr.com/ebook/getting-started-with-apache-spark-v2/)
 * [MapR ebooks](https://mapr.com/ebooks/)
 
-## Example 1
-
-Load data in spark,
+## Example 1 (load artificial data)
 
 ```{sh}
 // open interactive shell using scala
@@ -187,4 +185,5 @@ with open('agg_table.csv', 'w') as csvfile:
 	fwriter.writerow([aggdata.mean()[1], aggdata.mean()[2], aggdata.mean()[3], aggdata.mean()[4], aggdata.mean()[5]])
 ```
 
-* [jupyter notebook](./tracks_pyspark_demo.ipynb)
+
+* [jupyter notebook for example 3](./tracks_pyspark_demo.ipynb)
