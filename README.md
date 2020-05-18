@@ -6,6 +6,8 @@
 
 τελευταία ενημέρωση: 12/5/2020
 
+* [ΥΛΗ MASTER 2019-2020](./YLH_MASTER_2019_2020.md)
+
 ## Παρουσιάσεις
 
 * [Big Data](./01.%20Big%20Data.pdf)
@@ -17,7 +19,7 @@
 * [Apache Spark](./04.%20Apache%20Spark.pdf)
   * [Σημειώσεις - Java Magazine May-June 2016](./apache_spark/java_magazine_may_june_2016/README.md)
   * [Σημειώσεις - MapR Getting started with Apache Spark](/apache_spark/mapr_getting_started/README.md)
-  * [Σημειώσεις - Practical Apache Spark](/apache_spark/practical_apache_spark/README.md)
+  <!-- * [Σημειώσεις - Practical Apache Spark](/apache_spark/practical_apache_spark/README.md) -->
 
 ## MOOCs
 
