@@ -2,7 +2,8 @@
 	From inception to production
 	by James A. Scott
 
-* [Getting Started with Apache Spark from Inception to Production](https://mapr.com/ebook/getting-started-with-apache-spark-v2/)
+* [Getting Started with Apache Spark from Inception to Production](https://mapr.com/getting-started-apache-spark/)
+* [Getting Started with Apache Spark from Inception to Production - Version 2](https://mapr.com/ebook/getting-started-with-apache-spark-v2/)
 * [MapR ebooks](https://mapr.com/ebooks/)
 
 ## Example 1
@@ -93,7 +94,7 @@ GROUP BY item,auctionid""")
 scala> results.show()
 ```
 
-Previous code without comments.
+The above code without comments.
 
 ```{sh}
 import sqlContext.implicits._
@@ -122,65 +123,68 @@ results.show()
 
 ## Example 3 (Computing user profiles with Spark - python interactive shell)
 
-	// open interactive shell using python
-	$ pyspark
+* [tracks.csv](./tracks.csv)
 
-	from pyspark import SparkContext, SparkConf
-	from pyspark.mllib.stat import Statistics
-	import csv
+```{sh}
+// open interactive shell using python
+$ pyspark
 
-	conf = SparkConf().setAppName('ListenerSummarizer')
-	sc = SparkContext(conf=conf)
+from pyspark import SparkContext, SparkConf
+from pyspark.mllib.stat import Statistics
+import csv
 
+conf = SparkConf().setAppName('ListenerSummarizer')
+# sc = SparkContext(conf=conf)
 
-	trackfile = sc.textFile('tracks.csv')
+trackfile = sc.textFile('tracks.csv')
 
-	def make_tracks_kv(str):
-    	l = str.split(",")
-    	return [l[1], [[int(l[2]), l[3], int(l[4]), l[5]]]]
+def make_tracks_kv(str):
+	l = str.split(",")
+	return [l[1], [[int(l[2]), l[3], int(l[4]), l[5]]]]
 
-    # make a k,v RDD out of the input data
-    tbycust = trackfile.map(lambda line: make_tracks_kv(line)).reduceByKey(lambda a, b: a + b)
+# make a k,v RDD out of the input data
+tbycust = trackfile.map(lambda line: make_tracks_kv(line)).reduceByKey(lambda a, b: a + b)
 
-    def compute_stats_byuser(tracks):
-	    mcount = morn = aft = eve = night = 0
-	    tracklist = []
-	    for t in tracks:
-	        trackid, dtime, mobile, zip = t
-	        if trackid not in tracklist:
-	            tracklist.append(trackid)
-	        d, t = dtime.split(" ")
-	        hourofday = int(t.split(":")[0])
-	        mcount += mobile
-	        if (hourofday < 5):
-	            night += 1
-	        elif (hourofday < 12):
-	            morn += 1
-	        elif (hourofday < 17):
-	            aft += 1
-	        elif (hourofday < 22):
-	            eve += 1
-	        else:
-	            night += 1
-	        return [len(tracklist), morn, aft, eve, night, mcount]
+def compute_stats_byuser(tracks):
+	mcount = morn = aft = eve = night = 0
+	tracklist = []
+	for t in tracks:
+		trackid, dtime, mobile, zip = t
+		if trackid not in tracklist:
+			tracklist.append(trackid)
+		d, t = dtime.split(" ")
+		hourofday = int(t.split(":")[0])
+		mcount += mobile
+		if (hourofday < 5):
+			night += 1
+		elif (hourofday < 12):
+			morn += 1
+		elif (hourofday < 17):
+			aft += 1
+		elif (hourofday < 22):
+			eve += 1
+		else:
+			night += 1
+	return [len(tracklist), morn, aft, eve, night, mcount]
 
-	# compute profile for each user
-	custdata = tbycust.mapValues(lambda a: compute_stats_byuser(a))
+# compute profile for each user
+custdata = tbycust.mapValues(lambda a: compute_stats_byuser(a))
 
-	# compute aggregate stats for entire track history
-	aggdata = Statistics.colStats(custdata.map(lambda x: x[1]))
+# compute aggregate stats for entire track history
+aggdata = Statistics.colStats(custdata.map(lambda x: x[1]))
 
-
+#persist the data, in this case write to a file
+with open('live_table.csv', 'w', newline='') as csvfile:
+	fwriter = csv.writer(csvfile, delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
 	for k, v in custdata.collect():
-    	unique, morn, aft, eve, night, mobile = v
-    	tot = morn + aft + eve + night
+		unique, morn, aft, eve, night, mobile = v
+		tot = morn + aft + eve + night
+		fwriter.writerow([unique, morn, aft, eve, night, mobile])
 
-    # persist the data, in this case write to a file
-    with open('live_table.csv', 'wb') as csvfile:
-        fwriter = csv.writer(csvfile, delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        fwriter.writerow(unique, morn, aft, eve, night, mobile)
+# do the same with the summary data
+with open('agg_table.csv', 'w') as csvfile:
+	fwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+	fwriter.writerow([aggdata.mean()[1], aggdata.mean()[2], aggdata.mean()[3], aggdata.mean()[4], aggdata.mean()[5]])
+```
 
-    # do the same with the summary data
-    with open('agg_table.csv', 'wb') as csvfile:
-        fwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        fwriter.writerow(aggdata.mean()[0], aggdata.mean()[1], aggdata.mean()[2], aggdata.mean()[3], aggdata.mean()[4], aggdata.mean()[5])
+* [jupyter notebook](./tracks_pyspark_demo.ipynb)

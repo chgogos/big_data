@@ -38,6 +38,7 @@
   * [Not Everything is Big Data](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
     * [Σημειώσεις](/no_big_data/README.md)
 * Apache Hadoop - MapReduce
+  * [MapR - The Executive's Guide to Big Data and Apache Hadoop](https://mapr.com/executives-guide-hadoop/)
   * [Introduction to batch processing – MapReduce](https://datawhatnow.com/batch-processing-mapreduce/)
   * <https://hadoopproject.com/hadoop-projects/>
 * Apache Spark
