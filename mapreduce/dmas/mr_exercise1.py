@@ -20,3 +20,9 @@ if __name__ == '__main__':
   inputdata = open(sys.argv[1])
   mr.execute(inputdata, mapper, reducer)
 
+
+# python mr_exercise1.py  text2.json
+# [1, 1]
+# [2, 2]
+# [3, 5]
+# [4, 1]
