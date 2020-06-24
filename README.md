@@ -13,12 +13,12 @@
 * [Big Data](./01.%20Big%20Data.pdf)
 * [UBER - BIG DATA CASE STUDY](./02.%20UBER%20-%20BIG%20DATA%20CASE%20STUDY.pdf)
 * [Apache Hadoop](./03.%20Apache%20Hadoop-Map%20Reduce.pdf)
-  * [Σημειώσεις](/hadoop/udacity_training/README.md)
+  * [Κώδικας & σχόλια](/hadoop/udacity_training/README.md)
 * [Παραδείγματα Map Reduce](./05.%20Map%20Reduce%20παραδείγματα.pdf)
-  * [Σημειώσεις](/mapreduce/dmas/README.md)
+  * [Κώδικας & σχόλια](/mapreduce/dmas/README.md)
 * [Apache Spark](./04.%20Apache%20Spark.pdf)
-  * [Σημειώσεις - Java Magazine May-June 2016](./apache_spark/java_magazine_may_june_2016/README.md)
-  * [Σημειώσεις - MapR Getting started with Apache Spark](/apache_spark/mapr_getting_started/README.md)
+  * [Κώδικας & σχόλια - Java Magazine May-June 2016](./apache_spark/java_magazine_may_june_2016/README.md)
+  * [Κώδικας & σχόλια - MapR Getting started with Apache Spark](/apache_spark/mapr_getting_started/README.md)
   <!-- * [Σημειώσεις - Practical Apache Spark](/apache_spark/practical_apache_spark/README.md) -->
 
 ## MOOCs
@@ -38,7 +38,7 @@
   * [Tableau Top 10 Big Data Trends 2017](https://www.tableau.com/resource/top-10-big-data-trends-2017)
   * [Dataversity Big Data Trends in 2020](https://www.dataversity.net/big-data-trends-in-2020/)
   * [Not Everything is Big Data](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
-    * [Σημειώσεις](/no_big_data/README.md)
+    * [Κώδικας & σχόλια](/no_big_data/README.md)
 * Apache Hadoop - MapReduce
   * [MapR - The Executive's Guide to Big Data and Apache Hadoop](https://mapr.com/executives-guide-hadoop/)
   * [Introduction to batch processing – MapReduce](https://datawhatnow.com/batch-processing-mapreduce/)
