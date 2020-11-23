@@ -6,8 +6,6 @@
 
 τελευταία ενημέρωση: 18/5/2020
 
-* [ΥΛΗ MASTER 2019-2020](./YLH_MASTER_2019_2020.md)
-
 ## Παρουσιάσεις
 
 * [Big Data](./01.%20Big%20Data.pdf)
@@ -45,7 +43,7 @@
   * <https://hadoopproject.com/hadoop-projects/>
 * Apache Spark
   * <http://go.databricks.com/7-steps-for-a-developer-to-learn-apache-spark>
-  * <http://go.databricks.com/gentle-intro-spark>
+  * [Databricks: A gentle intro to Apache Spark](https://databricks.com/p/ebook/gentle-intro-to-apache-spark)
   * Python
     * <https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes>
     * <https://github.com/jadianes/spark-py-notebooks>
