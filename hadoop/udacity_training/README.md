@@ -2,7 +2,7 @@
 
 Udacity + cloudera MOOC <https://www.udacity.com/course/intro-to-hadoop-and-mapreduce--ud617>
 
-VirtualBox: New Red Hat (64bit) Linux (>=2GB RAM) - using existing hard disk <http://content.udacity-data.com/courses/ud617/Cloudera-Udacity-Training-VM-4.1.1.c.zip>
+VirtualBox: New Red Hat (64bit) Linux (>=2GB RAM) - using existing hard disk <http://content.udacity-data.com/courses/ud617/Cloudera-Udacity-Training-VM-4.1.1.c.zip> 1.7GB
 
    Udacity Hadoop VM
    user: training
@@ -18,6 +18,8 @@ Data (purchases.txt) can be downloaded from <http://content.udacity-data.com/cou
 
 
 ### Tests locally
+
+Total of all purchases per city.
 
 ```{sh}
 $ curl http://content.udacity-data.com/courses/ud617/purchases.txt.gz --output purchaces.txt.gz
@@ -46,6 +48,8 @@ sys 0m1.113s
 
 ### Test on Hadoop (virtual) cluster
 
+Fire up the VM...
+
 ```{sh}
 # localhost:50070  --> name node
 # localhost:50030  --> job tracker
@@ -59,9 +63,9 @@ VM$ hadoop fs -mkdir myinput
 VM$ hadoop fs -put data/purchases.txt myinput
 VM$ hadoop fs -ls -h myinput
 # execute map reduce job using alias hs
-VM$ hs code/mapper.py code/reducer.py myinput output1
+VM$ hs code/mapper.py code/reducer.py myinput output
 # execute map reduce job with full command using jar
-VM$ hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py -input myinput -output output1
+VM$ hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming hadoop-streaming-2.0.0-mr1-cdh4.1.1.jar -mapper code/mapper.py -reducer code/reducer.py -file code/mapper.py -file code/reducer.py -input myinput -output output1
 # display results
 VM$ hadoop fs -cat output1/part-00000
 # copy results from the Hadoop cluster to the local machine
