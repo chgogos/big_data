@@ -30,7 +30,6 @@
 * Big Data
   * [Big Data infographic](http://infographic.ly/big-data-the-hype-and-the-reality/)
   * [The 3Vs of Big Data](http://www.zdnet.com/article/volume-velocity-and-variety-understanding-the-three-vs-of-big-data/)
-  * [Dataversity Big Data Trends in 2020](https://www.dataversity.net/big-data-trends-in-2020/)
   * [Not Everything is Big Data](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)
     * [Κώδικας & σχόλια](/no_big_data/README.md)
 * Apache Hadoop - MapReduce
@@ -41,9 +40,9 @@
   * [How to install Spark on Ubuntu](https://phoenixnap.com/kb/install-spark-on-ubuntu)
   * <http://go.databricks.com/7-steps-for-a-developer-to-learn-apache-spark>
   * [Databricks: A gentle intro to Apache Spark](https://databricks.com/p/ebook/gentle-intro-to-apache-spark)
-  * Python
+  * pyspark jupyter notebooks
     * <https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes>
     * <https://github.com/jadianes/spark-py-notebooks>
-  * R
+  * R notebooks
     * [Mastering Spark with R](https://therinspark.com/)
     * <https://github.com/jadianes/spark-r-notebooks>

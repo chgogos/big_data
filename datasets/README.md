@@ -27,4 +27,9 @@ Web logs (108 files -  82.9MB)
 
 * [flight data](https://github.com/databricks/Spark-The-Definitive-Guide/blob/master/data/flight-data/csv/2015-summary.csv)
 
+## Apache Spark - word count example
+
+* [1984.txt](./../apache_spark/word_count/1984.txt)
+* [The_Great_Gatsby.txt](./../apache_spark/word_count/The_Great_Gatsby.txt)
+
 ---

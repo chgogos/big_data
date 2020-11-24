@@ -4,3 +4,4 @@
 * [The 10Vs of Big Data](https://tdwi.org/articles/2017/02/08/10-vs-of-big-data.aspx)
 * [Datamation Big Data Trends 2017](https://www.datamation.com/big-data/big-data-trends.html)
 * [Tableau Top 10 Big Data Trends 2017](https://www.tableau.com/resource/top-10-big-data-trends-2017)
+* [Dataversity Big Data Trends in 2020](https://www.dataversity.net/big-data-trends-in-2020/)
