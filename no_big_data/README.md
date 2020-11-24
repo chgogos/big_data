@@ -8,8 +8,8 @@
 *Download chess game data (pgn files) from <https://github.com/rozim/ChessData>
 
     ```sh
-    # assuming that chessData\Filtered is under the current folder
-    $ cd chessData\Filtered
+    # assuming that chessData/Filtered is under the current folder
+    $ cd chessData/Filtered
     $ head filtered_00.pgn
     [Event "BL 0708 SK Zehlendorf - OSC Baden Baden"]
     [Site "?"]
@@ -39,7 +39,7 @@
     user 0m28.954s
     sys 0m1.977s
     # even better results using awk and xargs
-    $ time find . -type f -name '*.pgn' -print0 | xargs -0 -n4 -P4 mawk '/Result/ { split($0, a, "-"); res = substr(a[1], length(a[1]), 1); if (res == 1) white++; if (res == 0) black++; if (res == 2) draw++ } END { print white+black+draw, white, black, draw }' | mawk '{games += $1; white += $2; black += $3; draw += $4; } END { print games, white, black, draw }'
+    $ time find . -type f -name '*.pgn' -print0 | xargs -0 -n 4 -P 0 mawk '/Result/ { split($0, a, "-"); res = substr(a[1], length(a[1]), 1); if (res == 1) white++; if (res == 0) black++; if (res == 2) draw++ } END { print white+black+draw, white, black, draw }' | mawk '{games += $1; white += $2; black += $3; draw += $4; } END { print games, white, black, draw }'
     2189096 830032 620712 738352
     real	0m2.666s
     user	0m7.823s

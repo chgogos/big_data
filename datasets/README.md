@@ -7,15 +7,21 @@
 
 ## Hadoop Udacity training course (by Cloudera)
 
-Δεδομένα πωλήσεων
+Sales data
 
 * <http://content.udacity-data.com/courses/ud617/purchases.txt.gz>
   * hadoop\udacity_training\MR_example1\purchases.txt (201MB)
 
-Web logs
+Web log (a single file)
 
 * <http://content.udacity-data.com/courses/ud617/access_log.gz>
   * hadoop\udacity_training\MR_example2\access_log (481MB)
+
+## Apache Spark - Java magazine 2016/06
+
+Web logs (108 files -  82.9MB)
+
+* <https://goo.gl/ruJ629>
 
 ## Spark the definitive guide
 
