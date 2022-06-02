@@ -23,7 +23,7 @@
     [ECO "C63"]
     ```
 
-    ``sh
+    ```sh
     $ du -h
     1.4G  .
     # example using 1.4G of chess data
