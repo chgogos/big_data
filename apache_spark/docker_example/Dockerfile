@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get install -y wget tar bash curl nano software-properties-common 
 
 # python3
-RUN python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas python3-simpy
+RUN apt-get install -y python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas python3-simpy
 
 # R
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
