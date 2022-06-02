@@ -1,8 +1,5 @@
 FROM openjdk:11.0.11-jre-slim-buster as builder
 
-# docker build -t spark-image .
-# docker image ls
-
 RUN apt-get update 
 RUN apt-get install -y wget tar bash curl nano software-properties-common 
 
@@ -32,19 +29,3 @@ EXPOSE 7077
 
 # RUN mkdir /app
 # WORKDIR /app
-
-# activate container for REPL (spark-shell or pyspark)
-# docker run -it --rm --name spark-image-component spark-image /bin/bash
-
-# activate container for submiting spark jobs (mount shared folder, mount ports)
-# docker run -it --rm --name spark-image-container --mount type=bind,source=E:/git_repos/big_data/apache_spark/docker_example/shared_folder,target=/shared_folder -p 8080:8080 --hostname localhost spark-image /bin/bash
-
-
-# start master node
-# /opt/spark/sbin/start-master.sh
-
-# start a worker
-# /opt/spark/sbin/start-worker.sh spark://localhost:7077
-
-# submit word count job 
-# /opt/spark/bin/spark-submit ./word_counter.py spark://localhost:7077
