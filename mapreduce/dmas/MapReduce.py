@@ -13,17 +13,16 @@ class MapReduce:
         self.result.append(value) 
 
     def execute(self, data, mapper, reducer):
-        # print "MAP PHASE"
+        # "MAP PHASE"
         for line in data:
             record = json.loads(line)
             mapper(record)
         
-        # print "SHUFFLE PHASE"
+        # "SHUFFLE PHASE"
         for key in self.intermediate:
             reducer(key, self.intermediate[key])
 
-        # print "REDUCE"
-        #jenc = json.JSONEncoder(encoding='latin-1')
+        # "REDUCE"
         jenc = json.JSONEncoder()
         for item in self.result:
             print(jenc.encode(item))
