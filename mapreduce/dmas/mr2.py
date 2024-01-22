@@ -2,26 +2,24 @@ import MapReduce
 import sys
 
 """
-join orders and line items 
+Inverted Index Example
 """
 
 mr = MapReduce.MapReduce()
 
-
 def mapper(record):
-    key = record[1]
-    mr.emit_intermediate(key, record)
-
+    key = record[0]
+    value = record[1]
+    words = value.split()
+    words = list(set(words)) # διαγραφή διπλότυπων
+    for w in words:
+      mr.emit_intermediate(w, key)
+      # print(f"key={w} value={key}")
 
 def reducer(key, list_of_values):
-    row = []
-    for record in list_of_values:
-        if record[0] == 'order':
-            row = record
-        else:
-            mr.emit(row+record)
+    # print(f"key={key} value={list_of_values}")
+    mr.emit((key, list_of_values))
 
-
-if __name__ == "__main__":
-    inputdata = open(sys.argv[1])
-    mr.execute(inputdata, mapper, reducer)
+if __name__ == '__main__':
+  inputdata = open(sys.argv[1])
+  mr.execute(inputdata, mapper, reducer)

@@ -2,24 +2,33 @@ import MapReduce
 import sys
 
 """
-Inverted Index Example
+Word Count Example
 """
 
 mr = MapReduce.MapReduce()
 
+
 def mapper(record):
+    # key: document identifier
+    # value: document contents
     key = record[0]
     value = record[1]
     words = value.split()
-    words = list(set(words))
     for w in words:
-      mr.emit_intermediate(w, key)
-      # print "key=%s value=%s" % (w,key)
+        mr.emit_intermediate(w, 1)
+        print(f"key={w} value={1}")
+
 
 def reducer(key, list_of_values):
-    # print "key=%s value=%s" % (key,list_of_values)
-    mr.emit((key, list_of_values))
+    # key: word
+    # value: list of occurrence counts
+    print(f"key={key} value={list_of_values}")
+    total = 0
+    for v in list_of_values:
+        total += v
+    mr.emit((key, total))
 
-if __name__ == '__main__':
-  inputdata = open(sys.argv[1])
-  mr.execute(inputdata, mapper, reducer)
+
+if __name__ == "__main__":
+    inputdata = open(sys.argv[1])
+    mr.execute(inputdata, mapper, reducer)

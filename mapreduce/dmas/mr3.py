@@ -1,19 +1,23 @@
 import MapReduce
 import sys
 
-
 mr = MapReduce.MapReduce()
 
+
 def mapper(record):
-    key = record[0]
-    mr.emit_intermediate(key, 1)
+    key = record[1]
+    mr.emit_intermediate(key, record)
+
 
 def reducer(key, list_of_values):
-    total = 0
-    for v in list_of_values:
-      total += v
-    mr.emit((key, total))
+    row = []
+    for record in list_of_values:
+        if record[0] == 'order':
+            row = record
+        else:
+            mr.emit(row+record)
 
-if __name__ == '__main__':
-  inputdata = open(sys.argv[1])
-  mr.execute(inputdata, mapper, reducer)
+
+if __name__ == "__main__":
+    inputdata = open(sys.argv[1])
+    mr.execute(inputdata, mapper, reducer)
