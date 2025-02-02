@@ -13,3 +13,6 @@ mapreduce/cpp/mr_example
 no_big_data/ChessData
 mapreduce/dmas/MapReduce.pyc
 *.pyc
+
+large_dataset.txt
+small_dataset.txt

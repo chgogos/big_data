@@ -14,10 +14,10 @@ def mapper(record):
     words = list(set(words)) # διαγραφή διπλότυπων
     for w in words:
       mr.emit_intermediate(w, key)
-      # print(f"key={w} value={key}")
+      print(f"key={w} value={key}")
 
 def reducer(key, list_of_values):
-    # print(f"key={key} value={list_of_values}")
+    print(f"key={key} value={list_of_values}")
     mr.emit((key, list_of_values))
 
 if __name__ == '__main__':
